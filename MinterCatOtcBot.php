@@ -10,7 +10,7 @@ if(true){
 }
 
 // создаем переменную бота
-$token = "1068349430:AAFuZ0FqduRuHOn6-gC8uP_XjaWKqKaGUHE";
+$token = "";
 $bot = new \TelegramBot\Api\Client($token,null);
 
 // обязательное. Запуск бота
