@@ -129,13 +129,19 @@ $name
 Примерная стоимость: $price MINTERCAT
 
 ~ $bip BIP
+";
 
-https://mintercat.com/cat/?id=$id
-			";
-
-			$pic = "https://mintercat.com/img/Cat$img.png"; //webp or png
-			
-			$bot->sendPhoto($getid, $pic, $text);
+			$pic = "https://mintercat.com/img/Cat$img.webp"; //webp or png
+			$urlT = "https://mintercat.com/cat?id=$id";
+			$keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup(
+				[
+					[
+						['url' => $urlT, 'text' => 'Connect']
+					]
+				]
+			);
+			$bot->sendSticker($getid, $pic);
+			$bot->sendMessage($getid, $text, "Markdown", null,null,$keyboard);
 			$bot->answerCallbackQuery($callback->getId());
 		}
   }
