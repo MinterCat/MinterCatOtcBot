@@ -2,15 +2,13 @@
 header('Content-Type: text/html; charset=utf-8');
 // подрубаем API
 require_once("vendor/autoload.php");
-
 // дебаг
 if(true){
 	error_reporting(E_ALL & ~(E_NOTICE | E_USER_NOTICE | E_DEPRECATED));
 	ini_set('display_errors', 1);
 }
-
+include('config.php');
 // создаем переменную бота
-$token = "";
 $bot = new \TelegramBot\Api\Client($token,null);
 
 // обязательное. Запуск бота
@@ -59,6 +57,7 @@ $bot->on(function($Update) use ($bot){
 
 if(mb_stripos($mtext,"#") !== false)
   {
+	include('config.php');
     $id = explode("#", $mtext)[1];
     $getid = $message->getChat()->getId();
     //--------------------------
@@ -81,9 +80,12 @@ if(mb_stripos($mtext,"#") !== false)
 			$rarity = $cats[0]['rarity'];
 			$rarity = $rarity * 100;
 			$price = $cats[0]['price'];
-			$name = $cats[0]['name'];
+			$name1 = $cats[0]['name'];
 			$count = $cats[0]['count'];
 			$gender = $cats[0]['gender'];
+			
+			$name2 = $payloads1[0]['name'];
+			if (($name2 != '') and ($name2 != null)) {$name = $name2;} else {$name = $name1;}
 			
 			$json3 = file_get_contents("https://api.mintercat.com/coin");
 			$payloads3 = json_decode($json3,true);
@@ -93,7 +95,7 @@ if(mb_stripos($mtext,"#") !== false)
 
 			$bip = round($bip,2);
 
-			$json2 = file_get_contents("https://api.minter.stakeholder.space/block?height=$id");
+			$json2 = file_get_contents($api."/block?height=$id");
 			$payloads2 = json_decode($json2,true);
 
 			$data = $payloads2['result']['time'];
