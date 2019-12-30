@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include('../config.php');
 
 const TOKEN = $token;//token telegram bot
 $key = 'MinterCatOtcBot';

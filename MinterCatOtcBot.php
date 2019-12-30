@@ -7,7 +7,7 @@ if(true){
 	error_reporting(E_ALL & ~(E_NOTICE | E_USER_NOTICE | E_DEPRECATED));
 	ini_set('display_errors', 1);
 }
-include('config.php');
+include('../config.php');
 // создаем переменную бота
 $bot = new \TelegramBot\Api\Client($token,null);
 
