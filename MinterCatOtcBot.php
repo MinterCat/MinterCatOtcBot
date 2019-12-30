@@ -57,7 +57,7 @@ $bot->on(function($Update) use ($bot){
 
 if(mb_stripos($mtext,"#") !== false)
   {
-	include('config.php');
+	include('../config.php');
     $id = explode("#", $mtext)[1];
     $getid = $message->getChat()->getId();
     //--------------------------
