@@ -99,15 +99,7 @@ if(mb_stripos($mtext,"#") !== false)
 			$payloads2 = json_decode($json2,true);
 
 			$data = $payloads2['result']['time'];
-			$nd = explode("T", $data)[0];
-
-			$timestamp2 = date('Y-m-d',strtotime("$nd"));
-					
-			$unixDate = strtotime("$timestamp2");
-			$normalDate = date('d', $unixDate);
-					
-			$unixD = strtotime($timestamp2);
-			$nd = date('d.m.Y', $unixD);
+			$nd = date('d.m.Y', strtotime(explode('T', $data)[0]));
 			
 			if ($gender == '♂') {
 			$gender_p = "Мужской ($gender)";
