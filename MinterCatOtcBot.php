@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 // подрубаем API
-require_once("vendor/autoload.php");
+require_once('vendor/autoload.php');
 // дебаг
 if(true){
 	error_reporting(E_ALL & ~(E_NOTICE | E_USER_NOTICE | E_DEPRECATED));
@@ -89,7 +89,7 @@ if(mb_stripos($mtext,"#") !== false)
 			
 			$json3 = file_get_contents("https://api.mintercat.com/coin");
 			$payloads3 = json_decode($json3,true);
-			$bip = $payloads3['estimate']; 
+			$bip = $payloads3['estimateCoinBuy']; 
 
 			$bip = $bip * $price;
 
